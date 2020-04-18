@@ -28,6 +28,32 @@ class Fire {
             }
         })
     }
+
+    getLists(callback) {
+        let ref = firebase
+            .firestore()
+            .collection("users")
+            .doc(this.userId)
+            .collection("lists");
+
+        this.unsubscribe = ref.onSnapshot(snapshot => {
+            lists = [];
+            
+            snapshot.forEach(doc => {
+                lists.push({id: doc.id, ...doc.data() });
+            });
+
+            callback(lists);
+        });
+    }
+
+    get userId() {
+        return firebase.auth().currentUser.uid;
+    }
+
+    detach() {
+        this.unsubscribe()
+    }
 }
 
 export default Fire;
