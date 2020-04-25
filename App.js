@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, Modal, ActivityIndicator  } from 'react-native';
 import { AntDesign } from '@expo/vector-icons'
 import Colors from './Colors'
-import tempData from './tempData'
 import TodoList from './components/TodoList'
 import AddListModal from './components/AddListModal'
 import Fire from './Fire'
